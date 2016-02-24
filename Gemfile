@@ -1,16 +1,16 @@
+ruby "2.1.1"
 source 'https://rubygems.org'
+gem 'sinatra', '>= 1.4.5'
+gem 'activerecord', '4.0.4'
+gem "sinatra-activerecord", require: 'sinatra/activerecord'
+gem "rake"
+gem "tux"
 
-gem 'sinatra', '>=1.0'
-gem 'sinatra-contrib'
-gem 'rake'
-gem 'datamapper', '~> 1.2'
-gem 'dm-constraints', '~> 1.2'
-gem 'dm-core', '~> 1.2', '>= 1.2.1'
-gem 'dm-sqlite-adapter', '~> 1.2'
-gem 'dm-timestamps', '~> 1.2'
-gem 'dm-validations', '~> 1.2'
-gem 'dm-aggregates', '~> 1.2'
-gem 'dm-migrations', '~> 1.2'
-gem 'dm-serializer', '~> 1.2', '>= 1.2.2'
-gem 'dm-transactions', '~> 1.2'
-gem 'dm-types', '~> 1.2', '>= 1.2.2'
+group :development do
+  gem 'sqlite3', '>= 1.3.9'
+  gem 'shotgun', '>= 0.9'
+end
+
+group :production do
+  gem 'pg'
+end

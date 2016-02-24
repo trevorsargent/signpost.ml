@@ -1,18 +1,20 @@
-require 'sinatra'
-require 'sinatra/json'
-require 'bundler'
-
-
+require 'rubygems'
+require 'bundler/setup'
 
 Bundler.require
-require './lib/signpost'
+require './models/signpost'
 
-# Datamapper
+## Active Record
 
-DataMapper.setup(:default, 'sqlite::memory')
-
-DataMapper.finalize
-DataMapper.auto_migrate!
+if ENV['DATABASE_URL']
+  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+else
+  ActiveRecord::Base.establish_connection(
+    :adapter  => 'sqlite3',
+    :database => 'db/development.db',
+    :encoding => 'utf8'
+  )
+end
 
 get '/' do
 	"Hello World\n"
