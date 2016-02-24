@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 Bundler.require
-require './models/signpost'
+require './models/Signpost'
 
 ## Active Record
 
