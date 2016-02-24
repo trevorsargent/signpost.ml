@@ -54,7 +54,7 @@ put '/signposts/:id' do
 
 	content_type :json
 
-	signpost = Signpost.get params[:id]
+	signpost = Signpost.find params[:id]
 	if signpost.update params[:signpost]
 		status 200
 		json "signpost was updated"
@@ -69,7 +69,7 @@ delete '/signposts/:id' do
 
 	content_type :json
 
-	signpost = Signpost.get params[:id]
+	signpost = Signpost.find params[:id]
 	if signpost.destroy
 		status 200
 		json "signpost was removed"
