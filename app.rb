@@ -32,7 +32,7 @@ end
 	get '/api/signposts' do
 		content_type :json
 
-		signposts = Signpost.all
+		signposts = Sign.all
 		signposts.to_json
 	end 
 
@@ -40,7 +40,7 @@ end
 
 		content_type :json
 
-		signpost = Signpost.find params[:id]
+		signpost = Sign.find params[:id]
 		signpost.to_json
 	end
 
@@ -48,7 +48,7 @@ end
 
 		content_type :json
 
-		signpost = Signpost.new params
+		signpost = Sign.new params
 		if signpost.save
 			status 201 #created
 		else
@@ -62,7 +62,7 @@ end
 
 		content_type :json
 
-		signpost = Signpost.find params[:id]
+		signpost = Sign.find params[:id]
 		if signpost.update params[:signpost]
 			status 200
 			json "signpost was updated"
@@ -77,7 +77,7 @@ end
 
 		content_type :json
 
-		signpost = Signpost.find params[:id]
+		signpost = Sign.find params[:id]
 		if signpost.destroy
 			status 200
 			json "signpost was removed"
@@ -108,7 +108,7 @@ end
 	get '/api/users/:id/signposts' do
 		content_type :json
 		user = User.find params[:id]
-		signposts = user.signposts.all
+		signposts = user.signs.all
 		signposts.to_json
 
 	end
@@ -156,5 +156,4 @@ end
 		end
 	end
 
-end
 
