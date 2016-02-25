@@ -96,6 +96,14 @@ get '/users/:id' do
 	user.to_json
 end
 
+get '/users/:id/signposts' do
+	content_type :json
+	user = User.get params[:id]
+	signposts = user.signposts.all
+	signposts.to_json
+	
+end
+
 post '/users' do
 
 	content_type :json
