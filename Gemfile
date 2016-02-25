@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'sinatra', '>= 1.4.5'
 gem 'activerecord', '4.0.4'
 gem "sinatra-activerecord", require: 'sinatra/activerecord'
+gem 'sinatra-subdomain'
 gem "rake"
 gem "tux"
 

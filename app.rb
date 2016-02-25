@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 Bundler.require
+
 require './models/Signpost'
 require './models/User'
 
@@ -18,134 +19,142 @@ else
 end
 
 get '/' do
-	"Hello World\n"
+	"please use api.signpost.ml to make api requests"
 end
 
+subdomain :api do 
 
-get '/signposts' do
-	content_type :json
-
-	signposts = Signpost.all
-	signposts.to_json
-end 
-
-get '/signposts/:id' do
-
-	content_type :json
-
-	signpost = Signpost.find params[:id]
-	signpost.to_json
-end
-
-post '/signposts' do
-
-	content_type :json
-
-	signpost = Signpost.new params
-	if signpost.save
-		status 201 #created
-	else
-		status 500 #error
-		json signpost.errors.full_messages
+	get '/' do
+		"Welcome to the api\n"
 	end
 
-end
 
-put '/signposts/:id' do 
+	get '/signposts' do
+		content_type :json
 
-	content_type :json
+		signposts = Signpost.all
+		signposts.to_json
+	end 
 
-	signpost = Signpost.find params[:id]
-	if signpost.update params[:signpost]
-		status 200
-		json "signpost was updated"
-	else
-		status 500
-		json signpost.errors.full_messages
-	end
-end
+	get '/signposts/:id' do
 
+		content_type :json
 
-delete '/signposts/:id' do
-
-	content_type :json
-
-	signpost = Signpost.find params[:id]
-	if signpost.destroy
-		status 200
-		json "signpost was removed"
-	else
-		status 500
-		json "There was a problem removing the signpost"
-	end
-end
-
-
-get '/users' do
-	content_type :json
-
-	users = User.all
-	users.to_json
-end 
-
-get '/users/:id' do
-
-	content_type :json
-
-	user = User.find params[:id]
-	user.to_json
-end
-
-
-
-get '/users/:id/signposts' do
-	content_type :json
-	user = User.find params[:id]
-	signposts = user.signposts.all
-	signposts.to_json
-
-end
-
-post '/users' do
-
-	content_type :json
-
-	user = User.new params
-	if user.save
-		status 201 #created
-	else
-		status 500 #error
-		json user.errors.full_messages
+		signpost = Signpost.find params[:id]
+		signpost.to_json
 	end
 
-end
+	post '/signposts' do
 
-put '/users/:id' do 
+		content_type :json
 
-	content_type :json
+		signpost = Signpost.new params
+		if signpost.save
+			status 201 #created
+		else
+			status 500 #error
+			json signpost.errors.full_messages
+		end
 
-	user = User.find params[:id]
-	if user.update params[:user]
-		status 200
-		json "user was updated"
-	else
-		status 500
-		json user.errors.full_messages
 	end
-end
 
+	put '/signposts/:id' do 
 
-delete '/users/:id' do
+		content_type :json
 
-	content_type :json
-	
-	user = User.find params[:id]
-	if user.destroy
-		status 200
-		json "user was removed"
-	else
-		status 500
-		json "There was a problem removing the user"
+		signpost = Signpost.find params[:id]
+		if signpost.update params[:signpost]
+			status 200
+			json "signpost was updated"
+		else
+			status 500
+			json signpost.errors.full_messages
+		end
 	end
+
+
+	delete '/signposts/:id' do
+
+		content_type :json
+
+		signpost = Signpost.find params[:id]
+		if signpost.destroy
+			status 200
+			json "signpost was removed"
+		else
+			status 500
+			json "There was a problem removing the signpost"
+		end
+	end
+
+
+	get '/users' do
+		content_type :json
+
+		users = User.all
+		users.to_json
+	end 
+
+	get '/users/:id' do
+
+		content_type :json
+
+		user = User.find params[:id]
+		user.to_json
+	end
+
+
+
+	get '/users/:id/signposts' do
+		content_type :json
+		user = User.find params[:id]
+		signposts = user.signposts.all
+		signposts.to_json
+
+	end
+
+	post '/users' do
+
+		content_type :json
+
+		user = User.new params
+		if user.save
+			status 201 #created
+		else
+			status 500 #error
+			json user.errors.full_messages
+		end
+
+	end
+
+	put '/users/:id' do 
+
+		content_type :json
+
+		user = User.find params[:id]
+		if user.update params[:user]
+			status 200
+			json "user was updated"
+		else
+			status 500
+			json user.errors.full_messages
+		end
+	end
+
+
+	delete '/users/:id' do
+
+		content_type :json
+		
+		user = User.find params[:id]
+		if user.destroy
+			status 200
+			json "user was removed"
+		else
+			status 500
+			json "There was a problem removing the user"
+		end
+	end
+
 end
 
