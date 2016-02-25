@@ -19,7 +19,7 @@ else
 end
 
 get '/' do
-	"please use signpost.ml/api to make api requests"
+	"please use signpostml/api to make api requests"
 end
 
 
@@ -29,61 +29,56 @@ end
 	end
 
 
-	get '/api/signposts' do
+	get '/api/signs' do
 		content_type :json
 
-		signposts = Sign.all
-		signposts.to_json
+		signs = Sign.all
+		signs.to_json
 	end 
 
-	get '/api/signposts/:id' do
+	get '/api/signs/:id' do
 
 		content_type :json
 
-		signpost = Sign.find params[:id]
-		signpost.to_json
+		sign = Sign.find params[:id]
+		sign.to_json
 	end
 
-	post '/api/signposts' do
+	post '/api/signs' do
 
 		content_type :json
 
-		signpost = Sign.new params
-		if signpost.save
+		sign = Sign.new params
+		if sign.save
 			status 201 #created
 		else
 			status 500 #error
-			json signpost.errors.full_messages
 		end
 
 	end
 
-	put '/api/signposts/:id' do 
+	put '/api/signs/:id' do 
 
 		content_type :json
 
-		signpost = Sign.find params[:id]
-		if signpost.update params[:signpost]
+		sign = Sign.find params[:id]
+		if sign.update params[:sign]
 			status 200
-			json "signpost was updated"
 		else
 			status 500
-			json signpost.errors.full_messages
 		end
 	end
 
 
-	delete '/api/signposts/:id' do
+	delete '/api/signs/:id' do
 
 		content_type :json
 
-		signpost = Sign.find params[:id]
-		if signpost.destroy
+		sign = Sign.find params[:id]
+		if sign.destroy
 			status 200
-			json "signpost was removed"
 		else
 			status 500
-			json "There was a problem removing the signpost"
 		end
 	end
 
@@ -103,13 +98,11 @@ end
 		user.to_json
 	end
 
-
-
-	get '/api/users/:id/signposts' do
+	get '/api/users/:id/signs' do
 		content_type :json
 		user = User.find params[:id]
-		signposts = user.signs.all
-		signposts.to_json
+		signs = user.signs.all
+		signs.to_json
 
 	end
 
@@ -122,7 +115,6 @@ end
 			status 201 #created
 		else
 			status 500 #error
-			json user.errors.full_messages
 		end
 
 	end
@@ -134,10 +126,8 @@ end
 		user = User.find params[:id]
 		if user.update params[:user]
 			status 200
-			json "user was updated"
 		else
 			status 500
-			json user.errors.full_messages
 		end
 	end
 
@@ -149,11 +139,73 @@ end
 		user = User.find params[:id]
 		if user.destroy
 			status 200
-			json "user was removed"
+			
 		else
 			status 500
-			json "There was a problem removing the user"
+			
 		end
 	end
 
+	get '/api/posts' do
+		content_type :json
+
+		posts = Post.all
+		posts.to_json
+	end 
+
+	get '/api/posts/:id' do
+
+		content_type :json
+
+		post = Post.find params[:id]
+		post.to_json
+	end
+
+	get '/api/posts/:id/signs' do
+		content_type :json
+		post = Post.find params[:id]
+		signs = post.signs.all
+		signs.to_json
+
+	end
+
+	post '/api/posts' do
+
+		content_type :json
+
+		post = Post.new params
+		if post.save
+			status 201 #created
+		else
+			status 500 #error
+		end
+
+	end
+
+	put '/api/posts/:id' do 
+
+		content_type :json
+
+		post = Post.find params[:id]
+		if post.update params[:post]
+			status 200
+		else
+			status 500
+		end
+	end
+
+
+	delete '/api/posts/:id' do
+
+		content_type :json
+		
+		post = Post.find params[:id]
+		if post.destroy
+			status 200
+			
+		else
+			status 500
+			
+		end
+	end
 
