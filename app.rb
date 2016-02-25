@@ -3,9 +3,9 @@ require 'bundler/setup'
 
 Bundler.require
 
-require './models/Signpost'
+require './models/Sign'
 require './models/User'
-
+require './models/Post'
 ## Active Record
 
 if ENV['DATABASE_URL']
