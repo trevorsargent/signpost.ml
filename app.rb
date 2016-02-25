@@ -19,24 +19,24 @@ else
 end
 
 get '/' do
-	"please use api.signpost.ml to make api requests"
+	"please use signpost.ml/api to make api requests"
 end
 
-subdomain :api do 
 
-	get '/' do
+
+	get '/api/' do
 		"Welcome to the api\n"
 	end
 
 
-	get '/signposts' do
+	get '/api/signposts' do
 		content_type :json
 
 		signposts = Signpost.all
 		signposts.to_json
 	end 
 
-	get '/signposts/:id' do
+	get '/api/signposts/:id' do
 
 		content_type :json
 
@@ -44,7 +44,7 @@ subdomain :api do
 		signpost.to_json
 	end
 
-	post '/signposts' do
+	post '/api/signposts' do
 
 		content_type :json
 
@@ -58,7 +58,7 @@ subdomain :api do
 
 	end
 
-	put '/signposts/:id' do 
+	put '/api/signposts/:id' do 
 
 		content_type :json
 
@@ -73,7 +73,7 @@ subdomain :api do
 	end
 
 
-	delete '/signposts/:id' do
+	delete '/api/signposts/:id' do
 
 		content_type :json
 
@@ -88,14 +88,14 @@ subdomain :api do
 	end
 
 
-	get '/users' do
+	get '/api/users' do
 		content_type :json
 
 		users = User.all
 		users.to_json
 	end 
 
-	get '/users/:id' do
+	get '/api/users/:id' do
 
 		content_type :json
 
@@ -105,7 +105,7 @@ subdomain :api do
 
 
 
-	get '/users/:id/signposts' do
+	get '/api/users/:id/signposts' do
 		content_type :json
 		user = User.find params[:id]
 		signposts = user.signposts.all
@@ -113,7 +113,7 @@ subdomain :api do
 
 	end
 
-	post '/users' do
+	post '/api/users' do
 
 		content_type :json
 
@@ -127,7 +127,7 @@ subdomain :api do
 
 	end
 
-	put '/users/:id' do 
+	put '/api/users/:id' do 
 
 		content_type :json
 
@@ -142,7 +142,7 @@ subdomain :api do
 	end
 
 
-	delete '/users/:id' do
+	delete '/api/users/:id' do
 
 		content_type :json
 		
