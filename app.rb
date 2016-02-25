@@ -32,7 +32,7 @@ get '/signposts/:id' do
 
 	content_type :json
 
-	signpost = Signpost.get params[:id]
+	signpost = Signpost.find params[:id]
 	signpost.to_json
 end
 
