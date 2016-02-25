@@ -3,7 +3,7 @@ require 'bundler/setup'
 
 Bundler.require
 require './models/Signpost'
-require '.models/User'
+require './models/User'
 
 ## Active Record
 
