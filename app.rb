@@ -31,14 +31,6 @@ end
 
 # API ROOT
 
-subdomain :test do
-
-	get '/' do 
-		"welcome to subdomain test"
-	end
-
-end
-
 get '/api/' do
 	"Welcome to the api\n"
 end

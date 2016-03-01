@@ -1,4 +1,8 @@
+
 ruby "2.2.2"
+
+
+
 source 'https://rubygems.org'
 gem 'sinatra', '>= 1.4.5'
 gem 'activerecord', '4.0.4'
@@ -14,4 +18,8 @@ end
 
 group :production do
   gem 'pg'
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 410026df4042d00988cf872a19224bcb18dcbc2b
