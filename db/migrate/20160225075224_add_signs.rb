@@ -4,7 +4,7 @@ class AddSigns < ActiveRecord::Migration
   		t.integer :post_id
   		t.integer :user_id
 		t.text :message
-		t.integer :type
+		t.integer :type_label
 		t.datetime :created_at
   	end
   end
