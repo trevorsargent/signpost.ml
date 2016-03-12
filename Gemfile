@@ -5,6 +5,7 @@ gem "sinatra-activerecord", require: 'sinatra/activerecord'
 gem 'sinatra-subdomain'
 gem "rake"
 gem "tux"
+gem "bcrypt"
 
 group :development do
   gem 'sqlite3', '>= 1.3.9'
