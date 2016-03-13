@@ -1,9 +1,17 @@
 # GET /////////////
 
-get '/api/user/name/:name' do
+get '/api/user/login/:login' do
 	content_type :json
-	user = User.find_by(name: params[:name])
+	user = User.find_by(user_name: params[:login])
 	user.to_json
+
+end
+
+get '/api/user/login/:login/signs' do
+	content_type :json
+	user = User.find_by(user_name: params[:login])
+	signs = user.signs.all
+	signs.to_json
 
 end
 
@@ -13,6 +21,8 @@ get '/api/user/id/:id/signs' do
 	signs = user.signs.all
 	signs.to_json
 end
+
+
 
 get '/api/users' do
 	content_type :json

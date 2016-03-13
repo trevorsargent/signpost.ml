@@ -21,18 +21,17 @@ ActiveRecord::Schema.define(version: 20160225075357) do
     t.datetime "created_at"
   end
 
-  create_table "signs", force: true do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.text     "message"
-    t.integer  "type_label"
-    t.datetime "created_at"
-  end
+  add_index "posts", ["id"], name: "sqlite_autoindex_posts_1", unique: true
+
+# Could not dump table "signs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string "name"
     t.string "user_name"
     t.string "password_digest"
   end
+
+  add_index "users", ["id"], name: "sqlite_autoindex_users_1", unique: true
 
 end
