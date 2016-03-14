@@ -7,7 +7,7 @@ get '/api/posts' do
 	posts.to_json
 end 
 
-get '/api/posts/:id' do
+get '/api/post/id/:id' do
 
 	content_type :json
 
@@ -15,9 +15,24 @@ get '/api/posts/:id' do
 	post.to_json
 end
 
-get '/api/posts/:id/signs' do
+get '/api/post/id/:id/signs' do
 	content_type :json
 	post = Post.find params[:id]
+	signs = post.signs.all
+	signs.to_json
+end
+
+get '/api/post/title/:title' do
+
+	content_type :json
+	post = Post.find_by title: params[:title]
+	post.to_json
+end
+
+get '/api/post/title/:title/signs' do
+
+	content_type :json
+	post = Post.find_by title: params[:title]
 	signs = post.signs.all
 	signs.to_json
 end

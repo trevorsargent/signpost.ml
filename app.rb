@@ -35,13 +35,6 @@ get '/api/' do
 	"Welcome to the api\n"
 end
 
-# SIGNS
-
-
-
-# USERS
-
-
 require './includes/signs.rb'
 require './includes/users.rb'
 require './includes/posts.rb'
