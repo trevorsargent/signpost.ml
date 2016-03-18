@@ -10,7 +10,7 @@ end
 
 @post = Post.create(title: "dovecote", lat: '5.0', long: '12.9', visible: "true")
 
-@user = User.first
+@user = User.find_by(user_name: "tzcliff")	
 
 @user.signs.create(message: "lol yes", post_id: @post.id)
 
