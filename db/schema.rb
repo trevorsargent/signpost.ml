@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225075357) do
+ActiveRecord::Schema.define(version: 20160318073543) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.boolean  "visible"
+    t.decimal  "lat"
+    t.decimal  "long"
     t.datetime "created_at"
+    t.boolean  "visible"
   end
 
   add_index "posts", ["id"], name: "sqlite_autoindex_posts_1", unique: true
