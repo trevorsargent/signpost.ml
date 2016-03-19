@@ -35,7 +35,7 @@ get '/api/' do
 	"Welcome to the api\n"
 end
 
-require './includes/signs.rb'
-require './includes/users.rb'
-require './includes/posts.rb'
+require './includes/sign_routes.rb'
+require './includes/user_routes.rb'
+require './includes/post_routes.rb'
 
