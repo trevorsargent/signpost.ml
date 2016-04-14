@@ -8,7 +8,12 @@ user_list.each do |name, user_name, password|
 	User.create(name: name, user_name: user_name, password: password, password_confirmation: password)
 end
 
-@post = Post.create(title: "dovecote", lat: '5.0', long: '12.9', visible: "true")
+Post.find_each do |post|
+post.destroy
+end
+
+@post = Post.create(title: "dovecote", lat: '45.4518618', long: '-122.6685581', visible: "true")
+Post.create(title: "jupiper", lat: '45.447607', long: '-122.6744968', visible: "true")
 
 @user = User.find_by(user_name: "tzcliff")	
 
