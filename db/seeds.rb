@@ -15,9 +15,12 @@ end
 @post = Post.create(title: "dovecote", lat: '45.4518618', long: '-122.6685581', visible: "true")
 Post.create(title: "jupiper", lat: '45.447607', long: '-122.6744968', visible: "true")
 
+@post = Post.find_by(title: "dovecote")
+
 @user = User.find_by(user_name: "tzcliff")	
 
 @user.signs.create(message: "lol yes", post_id: @post.id)
 
-
+@post.signs.create(message: "heyoooo:", post_id: @post.id)
+@post.signs.create(message: "yeyyyyyy", post_id: @post.id)
 
