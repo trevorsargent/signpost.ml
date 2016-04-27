@@ -36,6 +36,7 @@ put '/api/sign/id/:id' do
 	content_type :json
 
 	sign = Sign.find params[:id]
+
 	if sign.update params[:sign]
 		status 200
 	else

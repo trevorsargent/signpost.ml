@@ -78,16 +78,30 @@ end
 
 # PUT /////////////
 
-put '/api/post/title/:title' do 
+put '/api/post/:old_title' do 
+
 
 	content_type :json
 
-	post = Post.find_by title: params[:title]
-	if post.update params
-		status 200
-	else
-		status 500
+	post = Post.find_by title: params[:old_title]
+
+	# post.to_json
+
+	if params[:title]
+		post.title = params[:title]
 	end
+	if params[:lat]
+		post.lat = params[:lat]
+	end
+	if params[:long]
+		post.long = params[:long]
+	end
+	if params[:visible]
+		post.visible = params[:visible]
+	end
+
+	post.to_json
+
 end
 
 # DELETE /////////////

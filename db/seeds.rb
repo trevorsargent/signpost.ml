@@ -13,7 +13,7 @@ post.destroy
 end
 
 @post = Post.create(title: "dovecote", lat: '45.4518618', long: '-122.6685581', visible: "true")
-Post.create(title: "jupiper", lat: '45.447607', long: '-122.6744968', visible: "true")
+Post.create(title: "juniper", lat: '45.447607', long: '-122.6744968', visible: "true")
 
 @post = Post.find_by(title: "dovecote")
 
