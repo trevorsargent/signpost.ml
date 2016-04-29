@@ -22,8 +22,6 @@ get '/api/user/id/:id/signs' do
 	signs.to_json
 end
 
-
-
 get '/api/users' do
 	content_type :json
 
@@ -41,13 +39,14 @@ end
 
 # POST /////////////
 
-post '/api/users' do
+post '/api/user/new' do
 
 	content_type :json
 
 	user = User.new params
 	if user.save
 		status 201 #created
+		user.to_json
 	else
 		status 500 #error
 	end
@@ -55,21 +54,34 @@ end
 
 # PUT /////////////
 
-put '/api/users/:id' do 
+put '/api/user/update' do 
 
-	content_type :json
+	# content_type :json
 
 	user = User.find params[:id]
-	if user.update params[:user]
+
+
+	if params[:name] 
+		user.name = params[:name]
+	end
+
+	if params[:user_name]
+		user.user_name = params[:user_name]
+	end
+
+	if user.save
 		status 200
+		user.to_json
 	else
 		status 500
 	end
+
+
 end
 
 # DELETE /////////////
 
-delete '/api/users/:id' do
+delete '/api/user/delete' do
 
 	content_type :json
 	

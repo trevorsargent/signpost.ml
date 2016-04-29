@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318073543) do
+ActiveRecord::Schema.define(version: 20160318073201) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -21,17 +21,19 @@ ActiveRecord::Schema.define(version: 20160318073543) do
     t.boolean  "visible"
   end
 
-  add_index "posts", ["id"], name: "sqlite_autoindex_posts_1", unique: true
-
-# Could not dump table "signs" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "signs", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.string   "message"
+    t.integer  "type_label"
+    t.string   "password_digest"
+    t.datetime "created_at"
+  end
 
   create_table "users", force: true do |t|
     t.string "name"
     t.string "user_name"
     t.string "password_digest"
   end
-
-  add_index "users", ["id"], name: "sqlite_autoindex_users_1", unique: true
 
 end

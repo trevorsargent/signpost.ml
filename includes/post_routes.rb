@@ -64,28 +64,26 @@ end
 
 # POST /////////////
 
-post '/api/posts' do
+post '/api/post/new' do
 
 	content_type :json
 
 	post = Post.new params
 	if post.save
 		status 201 #created
+		post.to_json
 	else
 		status 500 #error
 	end
+
 end
 
 # PUT /////////////
 
-put '/api/post/:old_title' do 
+put '/api/post/update' do 
 
+	post = Post.find params[:id]
 
-	content_type :json
-
-	post = Post.find_by title: params[:old_title]
-
-	# post.to_json
 
 	if params[:title]
 		post.title = params[:title]
@@ -100,13 +98,20 @@ put '/api/post/:old_title' do
 		post.visible = params[:visible]
 	end
 
-	post.to_json
+	if post.save
+		status 200
+		post.to_json
+	else
+		status 500
+	end
+
+
 
 end
 
 # DELETE /////////////
 
-delete '/api/post/title/:title' do
+delete '/api/post/delete' do
 
 	content_type :json
 	

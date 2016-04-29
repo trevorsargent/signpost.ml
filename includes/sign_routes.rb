@@ -17,36 +17,48 @@ end
 
 # POST /////////////
 
-post '/api/signs' do
+post '/api/sign/new' do
 
 	content_type :json
 
 	sign = Sign.new params
 	if sign.save
 		status 201 #created
+		sign.to_json
 	else
 		status 500 #error
 	end
+
 end
 
 # PUT /////////////
 
-put '/api/sign/id/:id' do 
+put '/api/sign/update' do 
 
 	content_type :json
 
 	sign = Sign.find params[:id]
 
-	if sign.update params[:sign]
+	if params[:message]
+		sign.message = params[:message]
+	end
+	if params[:type_label]
+		sign.type_label = params[:type_label]
+	end
+
+	if post.save?
 		status 200
+		sign.to_json
 	else
 		status 500
 	end
+
+
 end
 
 # DELETE /////////////
 
-delete '/api/sign/id/:id' do
+delete '/api/sign/delete' do
 
 	content_type :json
 
