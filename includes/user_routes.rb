@@ -56,7 +56,7 @@ end
 
 put '/api/user/update' do 
 
-	# content_type :json
+	content_type :json
 
 	user = User.find params[:id]
 
@@ -94,13 +94,3 @@ delete '/api/user/delete' do
 		
 	end
 end
-
-
-
-
-
-
-
-
-
-
