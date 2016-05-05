@@ -43,7 +43,9 @@ post '/api/user/new' do
 
 	content_type :json
 
-	user = User.new params
+	@params = JSON.parse(request.body.read.to_s)
+
+	user = User.new @params
 	if user.save
 		status 201 #created
 		user.to_json
@@ -58,15 +60,17 @@ put '/api/user/update' do
 
 	content_type :json
 
-	user = User.find params[:id]
+	@params = JSON.parse(request.body.read.to_s)
+
+	user = User.find @params[:id]
 
 
 	if params[:name] 
-		user.name = params[:name]
+		user.name = @params[:name]
 	end
 
 	if params[:user_name]
-		user.user_name = params[:user_name]
+		user.user_name = @params[:user_name]
 	end
 
 	if user.save

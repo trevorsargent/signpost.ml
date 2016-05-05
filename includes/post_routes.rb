@@ -68,7 +68,10 @@ post '/api/post/new' do
 
 	content_type :json
 
-	post = Post.create params
+	@params = JSON.parse(request.body.read.to_s)
+	
+
+	post = Post.new @params
 	if post.save
 		status 201
 	else
@@ -81,20 +84,22 @@ end
 
 put '/api/post/update' do 
 
-	post = Post.find params[:id]
+	@params = JSON.parse(request.body.read.to_s)
+
+	post = Post.find @params[:id]
 
 
 	if params[:title]
-		post.title = params[:title]
+		post.title = @params[:title]
 	end
 	if params[:lat]
-		post.lat = params[:lat]
+		post.lat = @params[:lat]
 	end
 	if params[:long]
-		post.long = params[:long]
+		post.long = @params[:long]
 	end
 	if params[:visible]
-		post.visible = params[:visible]
+		post.visible = @params[:visible]
 	end
 
 	if post.save
