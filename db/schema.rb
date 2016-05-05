@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160318073201) do
     t.integer  "user_id"
     t.string   "message"
     t.integer  "type_label"
-    t.string   "password_digest"
     t.datetime "created_at"
   end
 

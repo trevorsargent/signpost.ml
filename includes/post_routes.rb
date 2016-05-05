@@ -46,9 +46,9 @@ get '/api/post/loc/:lat/:lng/:rad' do
 	mLng = params[:lng].to_f
 	mRad = params[:rad].to_f
 
-	Post.find_each do |user|
-		if(dist(user.lat, mLat, user.long, mLng) < mRad) then
-			posts.push(user)
+	Post.find_each do |post|
+		if(dist(post.lat, mLat, post.long, mLng) < mRad) then
+			posts.push(post)
 		end
 	end
 
@@ -68,14 +68,13 @@ post '/api/post/new' do
 
 	content_type :json
 
-	post = Post.new params
+	post = Post.create params
 	if post.save
-		status 201 #created
-		post.to_json
+		status 201
 	else
 		status 500 #error
 	end
-
+	post.to_json
 end
 
 # PUT /////////////
@@ -99,7 +98,6 @@ put '/api/post/update' do
 	end
 
 	if post.save
-		status 200
 		post.to_json
 	else
 		status 500
