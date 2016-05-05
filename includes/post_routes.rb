@@ -69,7 +69,6 @@ post '/api/post/new' do
 	content_type :json
 
 	@params = JSON.parse(request.body.read.to_s)
-	@params['id'] = null
 
 	post = Post.new @params
 	if post.save

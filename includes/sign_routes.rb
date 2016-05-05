@@ -22,7 +22,6 @@ post '/api/sign/new' do
 	content_type :json
 
 	@params = JSON.parse(request.body.read.to_s)
-	@params['id'] = null
 
 	sign = Sign.new @params
 	if sign.save
