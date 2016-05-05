@@ -21,7 +21,9 @@ post '/api/sign/new' do
 
 	content_type :json
 
-	sign = Sign.new params
+	@params = JSON.parse(request.body.read.to_s)
+
+	sign = Sign.new @params
 	if sign.save
 		status 201 #created
 		sign.to_json
@@ -37,13 +39,15 @@ put '/api/sign/update' do
 
 	content_type :json
 
-	sign = Sign.find params[:id]
+	@params = JSON.parse(request.body.read.to_s)
+
+	sign = Sign.find @params[:id]
 
 	if params[:message]
-		sign.message = params[:message]
+		sign.message = @params[:message]
 	end
 	if params[:type_label]
-		sign.type_label = params[:type_label]
+		sign.type_label = @params[:type_label]
 	end
 
 	if post.save?
