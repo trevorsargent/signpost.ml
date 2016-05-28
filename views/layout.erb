@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>
+			Signpost - plant a post, hang a sign.
+		</title>
+		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	</head>
+	<body>
+		<%= erb :nav %>
+		<%= yield %>
+		<%= erb :footer %>
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      	<script type="text/javascript" src="/js/materialize.min.js"></script>
+      	<script type="text/javascript" src="/js/functions.js"></script>
+    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw6_WxTxvIfEm-veuszPkCYd--FZvI1tg&callback=initMap" async defer></script>
+    	
+	</body>
+</html>

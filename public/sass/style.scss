@@ -1,0 +1,111 @@
+@import 'lib/materialize';
+
+$light: #fafafa;
+$primary: #607D8B; // Material Blue Grey 500
+$secondary: #455A64; // Material Blue Grey 700
+$accent: #9E9D24; // Material Lime 800
+$parallax-text: rgba(255,255,255,.9);
+
+/* ==========================================================================
+   $SIGNPOST.ML
+   ========================================================================== */
+
+nav ul a,
+nav .brand-logo {
+  color: $primary;
+}
+
+a{
+  color: $accent;
+}
+
+p {
+  line-height: 2rem;
+}
+
+h1, h5{
+  @extend .light;
+}
+
+.button-collapse {
+  color: $primary;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: $parallax-text;
+  @extend .center;
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+.parallax{
+  @extend .valign-wrapper
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+
+  p{
+    @extend .light;
+  }
+
+  h2,h5{
+    @extend .center;
+  }
+
+  i{
+    color: $accent;
+    
+  }
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+  background-color: $secondary;
+  p{
+     @extend .light;
+  }
+  color: $parallax-text;
+}
+
+.call-to-action{
+  background-color: $primary;
+  &:hover{
+    background-color: $accent;
+  }
+  @extend .btn-large;
+}
+
+#map{
+  min-height: 600px;
+  width: 100%;
+}
+
+.modal{
+  .bottom-sheet{
+    max-height: 90%;
+  }
+}

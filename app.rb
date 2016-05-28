@@ -26,7 +26,7 @@ end
 # ROOT
 
 get '/' do
-	"please use signpostml/api to make api requests"
+	erb :index
 end
 
 # API ROOT
@@ -38,4 +38,5 @@ end
 require './includes/sign_routes.rb'
 require './includes/user_routes.rb'
 require './includes/post_routes.rb'
+require './includes/site_routes.rb'
 
