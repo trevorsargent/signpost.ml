@@ -8,6 +8,7 @@ gem "tux"
 gem "bcrypt"
 gem "activeuuid"
 gem "json"
+gem 'pg'
 
 group :development do
   gem 'sqlite3', '>= 1.3.9'
@@ -15,6 +16,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  
 end
 
